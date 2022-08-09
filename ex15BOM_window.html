@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex15BOM_window</title>
+    <style>
+        div#circle{
+            width: 100px;
+            height: 100px;
+            background-color: violet;
+            border-radius: 50%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>window객체의 setTimeout()/clearTimeout()활용</h2>
+    <h2>window객체의 setInterval()/clearInterval()활용</h2>
+    <button onclick="show()">Click Me</button>
+    <button onclick="go()">Go Go</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="goGoogle()">3초 뒤에 구글로 이동</button>
+    <button onclick="move()">Move</button>
+    <hr>
+
+    <div id="circle"></div>
+
+    <script>
+        const show=function(){
+            var obj=document.getElementById('circle');
+            obj.style.display='block';
+            obj.style.backgroundColor='tomato'
+        }
+        const go=function(){
+            let obj=document.querySelector('#circle');
+            // window.clearTimeout(wid) : setTimeout 걸은 것을 중지
+            wid=window.setTimeout(show,3000)//1ms
+        }
+        const stop=function(){
+            if(wid != null)
+            clearTimeout(wid)
+        }
+        const goGoogle=function(){
+            setTimeout(movetopage,3000)
+        }
+        const movetopage=function(){
+            location.href="http://www.google.com"
+        }
+        const move=function(){
+            let obj=document.getElementById('circle')
+            setTimeout(showNmove,4000)
+        }
+        const showNmove=function(){
+            document.getElementById('circle').style.right='300px'
+            document.getElementById('circle').style.display='block'
+        }
+        //  [1] goGoogle()함수에서 location 이용해서 3초 뒤에 구글로 이동하기
+        //  [2] move()함수에서는 circle 객체를 참조해서 circle을 보여준 뒤에 x좌표를 300px
+        //      인 위치로 이동시키되, 4초 뒤에 이동시키기
+    </script>
+</body>
+</html>

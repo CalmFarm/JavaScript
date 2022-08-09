@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex13switch문</title>
+</head>
+<body>
+    <h1>switch~case문을 이용한 실습</h1>
+    prompt로 "가고싶은 포탈 사이트 이름을 입력하세요"<br> 
+    메시지를 띄우고 입력을 받는다. (ex. 네이버, 구글....)
+    switch~case문 이용해서 해당 사이트로 이동하는 프로그램을 작성하세요 (location객체 이용)
+    <hr color='red'>
+    <button onclick="window.location.href='http://www.naver.com'">네이버 페이지 이름</button>
+    <script>
+        let str=prompt('가고 싶은 사이트를 입력하세요')
+        //네이버, 구글, 다음 ,네이트
+        let url='';
+        
+        switch(str){
+            case '네이버' : url='http://naver.com'; break;
+            case '구글' : url='http://google.com'; break;
+            default : url='http://nate.com';break;
+        }
+        document.write(url);
+        location.href=url;
+        // let win=window.open(url,"popup","width=500px,height=500")
+        location.target='_blank';
+    </script>
+</body>
+</html>
