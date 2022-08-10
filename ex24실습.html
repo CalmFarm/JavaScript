@@ -12,7 +12,7 @@
         }
         div#movies{
             width: 90%;
-            margin: 50% auto;
+            margin: 50px auto;
             text-align: center;
             border: thick yellow solid;
         }
@@ -31,11 +31,24 @@
     </div>
     <script>
         //[1] 현재 상영중인 영화 이미지들 5개를 배열에 저장하세요.
+        var arr=Array(m1,m2,m3,m4,m5)
+        var m1=document.write('<img src=images/m1.png alt="" id="img">')
+        var m2=document.write('<img src=images/m2.png alt="" id="img">')
+        var m3=document.write('<img src=images/m3.png alt="" id="img">')
+        var m4=document.write('<img src=images/m4.png alt="" id="img">')
+        var m5=document.write('<img src=images/m5.png alt="" id="img">')
         
         //[2] 현재 상영작 버튼을 누르면 배열에 저장한 영화 이미지를
         //id가 movies인 곳에 나타나도록 처리하세요
         // innerHTML img태그를 id가 movies인곳에 삽입
-     
+        var btn1=document.getElementById('btn1')
+        var movies=document.getElementById('movies')
+        var img=document.getElementById('img')
+
+        btn1.onclick=()=>{
+            img.innerHTML=movies
+        }
+    
         //[3]▶️ 버튼을 누르면 영화 이미지들이 오른쪽으로 이동하도록 하세요
         //    오른쪽 끝으로 다 이동하면 다시 왼쪽으로 이동시키고,
         //    왼쪽 끝에 이동하면 다시 오른쪽으로 이동시키세요
