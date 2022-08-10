@@ -43,19 +43,29 @@
             clearTimeout(wid)
         }
         const goGoogle=function(){
-            setTimeout(movetopage,3000)
-        }
-        const movetopage=function(){
-            location.href="http://www.google.com"
+            setTimeout(()=>{
+                var obj=location.href="http://www.google.com"
+            },3000)
         }
         const move=function(){
             let obj=document.getElementById('circle')
-            setTimeout(showNmove,4000)
+            obj.style.display='block'
+            // setTimeout(moveCircle,4000)
+            // setTimeout(function(){
+            //     obj.style.position='absolute'
+            //     obj.style.left='300px'
+            // },4000)
+            setTimeout(()=>{
+                obj.style.position='absolute'
+                obj.style.left='300px'
+            },2000)
         }
-        const showNmove=function(){
-            document.getElementById('circle').style.right='300px'
-            document.getElementById('circle').style.display='block'
-        }
+        // const moveCircle=function(){
+        //     console.log('moveCircle')
+        //     let obj=document.getElementById('circle')
+        //     obj.style.position='absolute'
+        //     obj.style.left='300px'
+        // }
         //  [1] goGoogle()함수에서 location 이용해서 3초 뒤에 구글로 이동하기
         //  [2] move()함수에서는 circle 객체를 참조해서 circle을 보여준 뒤에 x좌표를 300px
         //      인 위치로 이동시키되, 4초 뒤에 이동시키기

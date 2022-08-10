@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex17BOM_document</title>
+    <script>
+        /*document 객체의 속성과 함수
+          [1] title 속성: 현재 문서의 제목을 출력하거나 설정
+          [2] lastModified속성: 현재 html문서가 마지막에 저장된 시간
+          [3] write()함수
+          [4] getElementById('아이디명')
+                getElementsByTagName,getElementsByClassName
+          [5] fgColor속성: 글자색
+          [6] bgColor속성: 배경색
+        */
+        document.write(`<hr color="red">`)
+        document.title="문서 제목을 변경해요"
+        document.write(`<h2>현재 문서가 마지막으로 저장된 시간:${document.lastModified}<h2>`)
+
+        window.onload=()=>{
+            var obj=document.getElementById('btn')
+            obj.onclick=function(){
+                // alert('obj='+obj)
+                document.bgColor='grey'
+                document.fgColor='darkred'
+
+                this.style.backgroundColor='navy'
+                this.style.color='yellow'
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>BOM - window.document 객체</h1>
+    <button id="btn">document의 색상 변경</button>
+</body>
+</html>
