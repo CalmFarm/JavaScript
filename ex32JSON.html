@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex32JSON.html</title>
+</head>
+<body>
+    <h1>JSON.stringify(), JSON.parse()</h1>
+    <h2>stringify(): JSON객체를 문자열로 변환하는 함수</h2>
+    <h2>parse(): 문자열을 JSON객체로 변환하는 함수</h2>
+    <div id="result"></div>
+    <hr>
+    <button>JSON객체생성하기</button>
+    <button>문자열을 json객체로만들기</button>
+    <button>Ajax요청보내 josn객체 받아오기</button>
+
+    <script>
+        let btAll=document.querySelectorAll('button')
+        let result=document.getElementById('result')
+        btAll[0].onclick=function(){
+            let movie={
+                "title":"탑건",
+                "actor":"톰 크루즈",
+                "poster":"m3.png"
+            }
+            console.log('movie의 typeof', typeof movie)
+            result.innerHTML=`<h1>제목: ${movie.title}, 배우: ${movie.actor}</h1>`
+        }//----------------------------------
+
+        btAll[1].onclick=function(){
+            let str='{"title":"헌트","actor":"이정재","poster":"m1.png"}'
+            //문자열을 json객체로 반환하는 함수 : 객체 = JSON.parse(문자열)
+            let jsonobj=JSON.parse(str)
+            result.innerHTML=`<h2>${jsonobj.title},${jsonobj.actor}</h2>`
+        }
+        //Ajax요청을 보낼수 있는 객체
+        let xhr=new XMLHttpRequest()
+
+        btAll[2].onclick=function(){
+            xhr.open('GET','ex32data.json')//서버에 요청을 준비하는 함수
+
+            xhr.onreadystatechange=function(){
+                //서버에서 응답이 올때 상태변화에 따라서 지정된 콜백함수를 호출
+                // alert(xhr.readyState+"/"+xhr.status)
+                // 4 값일때 응답이 완료 되었음 의미
+                // 200 : 성공적인 응답이 올경우 200값 반환
+                if(xhr.readyState==4 && xhr.status==200){
+                    //응답데이터 받기
+                    let txt=xhr.responseText
+                    let obj=JSON.parse(txt);
+                    let str=`
+                        <div>
+                            <img src="images/${obj.poster}">
+                            <h4>${obj.title}</h4>
+                            <h5>주연배우:${obj.actor}</h5>
+                        </div>
+                        `
+                    result.innerHTML=str
+                }
+            }
+
+            xhr.send(null)
+            //get방식 요청일 경우는 send()에 null을 넘긴다.
+            //post 방식 일 때는 요쳥파라미터 데이터를 send()함수에 전달된다.
+        }
+    </script>
+</body>
+</html>

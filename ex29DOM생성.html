@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex29DOM생성.html</title>
+</head>
+<body>
+    <h1>DOM - 새로운 Element 를 생성해서 추가해보자.</h1>
+    <button id='bt1'>새로운 요소 생성1</button>
+    <button id='bt2'>새로운 요소 생성2</button>
+    <hr color='red'>
+    <div id="result">
+
+    </div>
+
+    <script>
+        let bt1=document.getElementById('bt1')
+        let bt2=document.getElementById('bt2')
+        let result=document.getElementById('result')
+
+        bt1.addEventListener('click',function(){
+            var str=`<img src="images/m3.png">`
+            result.innerHTML=str
+        })
+
+        //[2] bt2클릭시 이미지 추가
+        /*
+            createElement('엘리먼트명'):새로운 엘리먼트생성
+            createTextNode('텍스트명'):새로운 텍스트생성
+            부모요소.appendChild(엘리먼트 객체) : 부모뒤에붙이기
+            부모요소.insertBefore(엘리먼트 객체 , target) : target앞에붙이기
+            속성추가시 setAttribute('속성값','속성값')
+        */
+        bt2.onclick=function(){
+            let objH2=document.createElement('h2')
+            let txt=document.createTextNode('Hello JavaScript')
+            objH2.appendChild(txt)
+            result.appendChild(objH2)
+            objH2.setAttribute('style','color:maroon')
+
+            var img=document.createElement('img')
+            img.setAttribute('src','images/m3.png')
+            img.setAttribute('width','150px')
+            img.setAttribute('height','220px')
+            // result.appendChild(img)
+            result.insertBefore(img,objH2)
+        }
+    </script>
+</body>
+</html>

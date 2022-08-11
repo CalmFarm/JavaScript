@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex27이벤트.html</title>
+    <style>
+        div#result{
+            width: 500px;
+            height: 500px;
+            border: 1px solid silver;
+            margin: 1em;
+        }
+        input{
+            width: 400px;
+            padding: 3px;
+        }
+    </style>
+    <script>
+        onload=function(){
+            let input1=document.querySelectorAll('input')
+            let obj=document.getElementById('result')
+            // alert(input1[0])
+            // let val=input1[0].value
+            input1[0].onkeydown=function(evt){
+                // console.log(evt)
+                if(evt.keyCode==13){//엔터 값일 때
+                let str=this.value
+                obj.innerHTML+=str+"<br>"
+                this.value=''//비워주기
+                this.focus()//입력 포커스 추가
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="">메시지:</label>
+        <input type="text" name="msg">
+    </div>
+    <div id="result">
+
+    </div>
+</body>
+</html>
